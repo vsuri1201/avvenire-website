@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.templatemo-top-bar {
+  min-height: 40px;
+  background-color:#161f28;
+border-bottom:#161f28 solid 1px;
+}
+
+.subheader {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+  color: #444444;
+}
+.subheader .socicons ul{ list-style:none; text-align:center;}
+.subheader .socicons ul li{ border-right:#111920 solid 1px; float:left; width:40px;}
+.subheader .socicons ul li a{ color:#9ba0a5; text-align:center; line-height:40px;}
+.subheader .socicons ul li a:hover{ color:#f15f0a;}
+
+.email { list-style:none; text-align:center;}
+.email li{ border-right:#111920 solid 1px; float:left; padding:0px 10px 0px 10px; line-height:40px; color:#9ba0a5;}
+.email li a{ color:#9ba0a5; text-align:center;}
+.email li a:hover{ color:#f15f0a;}
+.email li .fa{ padding:0px 5px 0px 0px;}
+.email li.bor-none{ border-right:none!important;}
