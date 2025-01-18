@@ -33,7 +33,10 @@
   <!-- Custom Styles -->
   <link href="css/custom-styles.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
-
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  
   <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -45,6 +48,28 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Avvenire Solutions</title>
+
+    <script src="js/wow.js"></script>
+  <script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100,
+        callback:     function(box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+      }
+    );
+    wow.init();
+  </script>
+  <script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+></script>
+
+<!-- Bootstrap 3.4.1 JS (CDN link) -->
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

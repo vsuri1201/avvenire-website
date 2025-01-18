@@ -1,0 +1,7 @@
+.innerbanner{ 
+    height:220px;
+    width:100%;
+    background:url(../../assets/images/inner_background.jpg)
+    repeat center;
+    z-index:-999;
+}
