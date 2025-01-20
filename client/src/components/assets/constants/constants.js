@@ -3,12 +3,10 @@ import HomeComponent from "../../tabcontents/home/HomeComponent";
 import CareerComponent from "../../tabcontents/careers/CareerComponent";
 import AboutComponent from "../../tabcontents/about/AboutComponent";
 import TrainingComponent from "../../tabcontents/training/TrainingComponent";
-import SolutionsComponent from "../../tabcontents/solutions/SolutionsComponent";
 import ContactComponent from "../../tabcontents/contact/ContactComponent";
 
 import about_background from "../images/about_background.png"
 import services_background from "../images/services_background.png"
-import solutions_background from "../images/solutions_background.png"
 import training_background from "../images/training_background.png"
 import contact_background from "../images/contact_background.png"
 // import career_background from "../images/career_background.png"
@@ -33,11 +31,6 @@ export const tabInfo = {
         component: TrainingComponent,
         "key": "Training",
         "background_image": training_background
-    },
-    "Solutions": {
-        component: SolutionsComponent,
-        "key": "Solutions",
-        "background_image": solutions_background
     },
     "Contact Us": {
         component: ContactComponent,

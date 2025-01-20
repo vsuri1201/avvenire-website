@@ -6,10 +6,9 @@
   }
   
 .job-card {
-  width: 200px;
+  width: 275px;
   border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 10px;
   cursor: pointer;
   animation: fadeInUp 0.5s ease-out forwards;  /* Customize the timing */
   opacity: 0;  /* Start with opacity 0 */
@@ -75,7 +74,7 @@ button {
 }
 
 .modal-body h2 {
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 600;
   color: #333;
   text-align: center;
@@ -112,7 +111,6 @@ button {
   padding: 10px;
   display: flex;
 }
-
 
 .close-button {
   font-size: 24px;
