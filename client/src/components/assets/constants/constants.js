@@ -234,3 +234,6 @@ export const jobs = [
     }
   }
 ];
+
+export const skillsOptions = ['C++', 'Java', 'JavaScript', 'Python', 'C#', 'DevOps', '.NET', 'SQL', 'AI/ML'];
+export const designationOptions = ['Software Engineer', 'Senior Engineer', 'Team Lead', 'Manager'];

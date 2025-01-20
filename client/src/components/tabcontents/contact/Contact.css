@@ -1,0 +1,67 @@
+.contact-form {
+  margin-top: 50px; /* Adds space from the top */
+  padding: 10px;
+}
+
+.contact-form label{
+  font-size: 14px;
+}
+
+.contact-form .form-label {
+  font-weight: bold;
+}
+
+.contact-form .form-check-input {
+  margin-top: 0.3rem;
+  padding:8px;
+}
+
+.contact-form textarea{
+  height: 120px;
+}
+
+.contact-form button {
+  padding: 10px 0;
+}
+
+/* For responsive behavior */
+@media (max-width: 767px) {
+  .contact-form {
+    padding: 0 15px; /* Padding for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-form {
+    margin-top: 50px;
+  }
+}
+
+.form-check{
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.form-check-label{
+  padding-left: 5px;
+  font-weight: lighter;
+}
+
+.form-check-inline{
+  padding: 10px;
+  display: inline-block;
+}
+
+.form-check-input[type="radio"] {
+  width: 10px;
+  height: 10px;
+  border-radius: 100% !important; /* Make it circular */
+  appearance: none; /* Remove default browser styling */
+  /* outline: none; */
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+h2>img{
+  padding-right: 0.5rem;
+}
