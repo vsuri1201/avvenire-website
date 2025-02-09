@@ -9,7 +9,7 @@ const ServicesComponent = ()=>{
                     <img src={service_image} className="thumbnail img-responsive" alt=""></img>
                 </div>
                 <div className="col-md-8">
-                    <p>Avvenire Solutions offers end-to-end IT services, from requirement gathering to implementation, delivery, and maintenance. We serve various industries, including Telecom, Finance, and more, offering solutions tailored to your business size and needs.</p>
+                    <p><strong>Avvenire Solutions</strong> offers end-to-end IT services, from requirement gathering to implementation, delivery, and maintenance. We serve various industries, including Telecom, Finance, and more, offering solutions tailored to your business size and needs.</p>
                     <p>Our services help businesses reduce implementation costs while delivering scalable, optimized solutions to meet evolving customer demands.</p>
                     <p>We specialize in Application Development, DevOps, and Production Support, with consultants who bring deep technical expertise to each project.</p>
                     <p>Our team is committed to providing niche services, ensuring that every client benefits from our specialized knowledge and experience in diverse domains.</p>

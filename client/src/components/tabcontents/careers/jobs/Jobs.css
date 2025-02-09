@@ -6,7 +6,9 @@
   }
   
 .job-card {
-  width: 275px;
+  width: 300px;
+  height: 175px;
+  position: relative;
   border: 1px solid #ccc;
   padding: 10px;
   cursor: pointer;
@@ -14,6 +16,20 @@
   opacity: 0;  /* Start with opacity 0 */
   transform: translateY(20px);  /* Start from slightly below */
   transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s ease;  /* Smooth transition when hovering */
+}
+
+.job-card .posted-date {
+  font-size: 12px;
+  color: #666;
+  position: absolute;
+  bottom:0px;
+  right: 0px;
+}
+
+.job-card .action-buttons{
+  position: absolute;
+  bottom:0px;
+  left: 0px;
 }
 
 .job-card:hover {

@@ -51,8 +51,9 @@ export const jobs = [
     id: 1,
     title: 'Software Engineer',
     description: 'Developing high-quality software with modern technologies.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior Software Engineer is responsible for developing and maintaining complex software systems with a focus on scalability and performance.",
+      jobDescription: "Software Engineer is responsible for developing and maintaining complex software systems with a focus on scalability and performance.",
       educationalRequirements: [
         "Bachelor’s degree in Computer Science or related field.",
         "4+ years of experience in Software Engineering with a focus on backend development, API design, and performance optimization.",
@@ -75,8 +76,9 @@ export const jobs = [
     id: 2,
     title: 'Frontend Developer',
     description: 'Creating responsive, high-performance web applications.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior Frontend Developer builds dynamic web interfaces and ensures excellent user experience on modern platforms.",
+      jobDescription: "Frontend Developer builds dynamic web interfaces and ensures excellent user experience on modern platforms.",
       educationalRequirements: [
         "Bachelor’s degree in Computer Science, Web Development, or related field.",
         "4+ years of experience in frontend web development with a strong focus on React and JavaScript.",
@@ -98,8 +100,9 @@ export const jobs = [
     id: 3,
     title: 'Backend Engineer',
     description: 'Building scalable backend services and APIs.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior Backend Engineer is responsible for creating robust, scalable backend architectures for modern applications.",
+      jobDescription: "Backend Engineer is responsible for creating robust, scalable backend architectures for modern applications.",
       educationalRequirements: [
         "Bachelor’s degree in Computer Science, Software Engineering, or related field.",
         "4+ years of experience as a Backend Engineer with expertise in Java, Node.js, and databases.",
@@ -121,8 +124,9 @@ export const jobs = [
     id: 4,
     title: 'Senior DevOps Engineer',
     description: 'Managing and automating infrastructure for scalable applications.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior DevOps Engineer is responsible for managing infrastructure, automating deployments, and ensuring high availability of production systems.",
+      jobDescription: 'Senior DevOps Engineer is responsible for managing infrastructure, automating deployments, and ensuring high availability of production systems.',
       educationalRequirements: [
         "Bachelor’s degree in Computer Science, Engineering, or related field.",
         "8+ years of experience in DevOps roles, with hands-on expertise in cloud platforms and infrastructure automation.",
@@ -144,8 +148,9 @@ export const jobs = [
     id: 5,
     title: 'Senior Full Stack Developer',
     description: 'Designing and developing both frontend and backend solutions.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior Full Stack Developer works across both frontend and backend to deliver full-stack applications.",
+      jobDescription: "Senior Full Stack Developer works across both frontend and backend to deliver full-stack applications.",
       educationalRequirements: [
         "Bachelor’s degree in Computer Science, Software Engineering, or related field.",
         "6+ years of experience in Full Stack Development with expertise in JavaScript, Node.js, and React.",
@@ -167,8 +172,9 @@ export const jobs = [
     id: 6,
     title: 'Senior Business Analyst',
     description: 'Analyzing and improving business processes through detailed research and collaboration.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior Business Analyst is responsible for identifying business process improvements and providing data-driven recommendations.",
+      jobDescription: "Senior Business Analyst is responsible for identifying business process improvements and providing data-driven recommendations.",
       educationalRequirements: [
         "Bachelor’s degree in Business Administration, Finance, Management, or related field.",
         "6+ years of experience as a Business Analyst in the tech industry or business analysis role.",
@@ -191,8 +197,9 @@ export const jobs = [
     id: 7,
     title: 'Senior Data Analyst',
     description: 'Leveraging data analysis to uncover actionable insights and drive business performance.',
+    postedDate: '01-10-2025',
     fullDescription: {
-      jobDescription: "A Senior Data Analyst is responsible for analyzing complex data sets to uncover insights and guide business decision-making.",
+      jobDescription: "Senior Data Analyst is responsible for analyzing complex data sets to uncover insights and guide business decision-making.",
       educationalRequirements: [
         "Bachelor’s degree in Data Science, Statistics, Computer Science, or related field.",
         "6+ years of experience as a Data Analyst, with expertise in data visualization and statistical analysis.",
@@ -214,6 +221,7 @@ export const jobs = [
     id: 8,
     title: 'Engineering Manager',
     description: 'Leading and mentoring engineering teams to deliver high-quality software solutions.',
+    postedDate: '01-10-2025',
     fullDescription: {
       jobDescription: "The Engineering Manager is responsible for overseeing engineering teams, guiding technical direction, and ensuring successful project delivery.",
       educationalRequirements: [
@@ -232,8 +240,59 @@ export const jobs = [
         "Identify risks and resolve issues to prevent delays and ensure quality delivery."
       ]
     }
+  },
+  {
+    id: 9,
+    title: "QA Lead",
+    description: "Leading the Quality Assurance team to ensure the delivery of high-quality software with minimal defects.",
+    postedDate: "15-01-2025",
+    fullDescription: {
+      jobDescription: "The QA Lead is responsible for overseeing the quality assurance process, including test planning, execution, and automation. The role also includes mentoring junior QA engineers and ensuring that quality is maintained throughout the SDLC.",
+      educationalRequirements: [
+            "Bachelor’s degree in Computer Science, Information Technology, or a related field.",
+            "5+ years of experience in quality assurance, including 2+ years in a leadership role.",
+            "Strong knowledge of testing methodologies, test automation tools, and CI/CD pipelines."
+        ],
+        rolesAndResponsibilities: [
+            "Lead and mentor the QA team, setting clear goals and objectives.",
+            "Develop and execute comprehensive test plans, test cases, and scripts for software projects.",
+            "Collaborate with development and product teams to define test requirements and ensure test coverage.",
+            "Implement and maintain automated testing frameworks for regression and functional testing.",
+            "Ensure the QA team follows best practices in test design, execution, and reporting.",
+            "Monitor test results, report defects, and track quality metrics to improve product quality.",
+            "Work with developers to resolve issues and ensure a smooth release process.",
+            "Drive process improvements within the QA team and the software development lifecycle.",
+            "Participate in hiring and training new QA team members."
+        ]
+    }
+  },
+  {
+    id: 10,
+    title: "Cloud Engineer",
+    description: "Designing and implementing scalable cloud infrastructure to support applications and services in the cloud.",
+    postedDate: "20-01-2025",
+    fullDescription: {
+      jobDescription: "The Cloud Engineer is responsible for designing, deploying, and managing cloud infrastructure. This includes automating cloud services, managing cloud environments, and ensuring security, performance, and cost optimization in a cloud-native environment.",
+      educationalRequirements: [
+            "Bachelor’s degree in Computer Science, Cloud Computing, or a related field.",
+            "5+ years of experience in cloud infrastructure management with a focus on AWS, Azure, or Google Cloud.",
+            "Experience with cloud automation tools like Terraform, CloudFormation, or Ansible."
+        ],
+        rolesAndResponsibilities: [
+            "Design, implement, and manage scalable cloud infrastructure for applications and services.",
+            "Collaborate with development teams to design cloud architectures that meet business needs.",
+            "Automate infrastructure provisioning, configuration, and deployment using tools like Terraform and CloudFormation.",
+            "Monitor cloud resources for performance, cost, and security, and optimize as needed.",
+            "Ensure the security of cloud environments by following best practices and compliance standards.",
+            "Implement CI/CD pipelines for cloud-based applications and ensure smooth deployments.",
+            "Troubleshoot and resolve issues related to cloud infrastructure, networking, and performance.",
+            "Stay updated on the latest cloud technologies, trends, and best practices, and provide recommendations for improvements.",
+            "Collaborate with cross-functional teams to ensure the scalability and reliability of cloud-based systems."
+        ]
+    }
   }
 ];
 
-export const skillsOptions = ['C++', 'Java', 'JavaScript', 'Python', 'C#', 'DevOps', '.NET', 'SQL', 'AI/ML'];
-export const designationOptions = ['Software Engineer', 'Senior Engineer', 'Team Lead', 'Manager'];
+export const skillsOptions = ['Java/J2EE', 'JavaScript', 'Python', 'DevOps', '.NET', 'SQL', 'AI/ML', 'Azure/AWS Cloud', 'C#','C++'];
+export const designationOptions = ['Software Engineer', 'Senior Software Engineer', 'Full Stack Developer', 'Tech Lead',
+   'DevOps Engineer','QA Analyst', 'QA Lead', 'Business Analyst','Architect','Cloud Engineer','Manager'];

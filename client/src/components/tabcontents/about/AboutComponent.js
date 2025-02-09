@@ -5,18 +5,13 @@ const AboutComponent = ()=>{
         <div class="container mar-t-50">
             <div class="about-content col-md-offset-1 col-md-11">
                 <section id="about">
-                    <h2>About Avvenire Solutions</h2>
-                    <p>Avvenire Solutions is a leading provider of innovative, industry-specific solutions tailored to meet the unique needs of our clients. We are committed to delivering high-quality, end-to-end IT services that empower businesses to achieve their goals. Whether it's streamlining operations, enhancing digital capabilities, or improving overall efficiency, we offer customized solutions designed for long-term success. Our deep expertise across a variety of industries ensures that our clients receive the most relevant and impactful services for their specific challenges and objectives.</p>
+                    <h2>What We Do?</h2>
+                    <p><strong>Avvenire Solutions</strong> is a leading provider of innovative, industry-specific solutions tailored to meet the unique needs of our clients. We are committed to delivering high-quality, end-to-end IT services that empower businesses to achieve their goals. Whether it's streamlining operations, enhancing digital capabilities, or improving overall efficiency, we offer customized solutions designed for long-term success. Our deep expertise across a variety of industries ensures that our clients receive the most relevant and impactful services for their specific challenges and objectives.</p>
                 </section>
 
                 <section id="services">
-                    <h2>Comprehensive IT Services for Every Business Need</h2>
+                    <h2>IT Services for Every Business Need</h2>
                     <p>As a versatile IT service provider, Avvenire Solutions offers a broad range of services designed to meet the needs of businesses of all sizes. From small enterprises to large, multinational corporations, we cater to companies looking to embrace the latest technology advancements. Our portfolio includes IT consulting, software application development, cloud services, mobile solutions, and social technology strategies, each of which can be tailored to align with your unique business requirements. By providing holistic solutions, we ensure that our clients receive the right technology at the right time, driving efficiency and innovation.</p>
-                </section>
-
-                <section id="location">
-                    <h2>Located at the Heart of a Tech Hub</h2>
-                    <p>Situated in a thriving technology hub, Avvenire Solutions is at the forefront of the latest advancements in IT. Our location provides us with unparalleled access to cutting-edge developments, emerging technologies, and a vibrant talent pool. Being part of this dynamic ecosystem allows us to stay ahead of the curve, ensuring that we can offer our clients innovative solutions that are both current and future-proof. By integrating the latest trends and best practices into our service offerings, we help our clients stay competitive in a rapidly evolving digital landscape.</p>
                 </section>
 
                 <section id="industry-solutions">
@@ -32,6 +27,11 @@ const AboutComponent = ()=>{
                 <section id="excellence">
                     <h2>Commitment to Excellence and Client Success</h2>
                     <p>At Avvenire Solutions, we are proud of our reputation for delivering top-tier services that ensure the success of our clients. Our team of experienced professionals brings a wealth of knowledge, skills, and dedication to every project we undertake. We pride ourselves on our ability to solve complex problems with innovative, scalable solutions that not only meet but exceed client expectations. Our commitment to excellence is reflected in every aspect of our work, from the quality of our solutions to the level of customer service we provide. We are here to ensure your success, today and in the future.</p>
+                </section>
+
+                <section id="location">
+                    <h2>Located at the Heart of a Tech Hub</h2>
+                    <p>Situated in a thriving technology hub, Avvenire Solutions is at the forefront of the latest advancements in IT. Our location provides us with unparalleled access to cutting-edge developments, emerging technologies, and a vibrant talent pool. Being part of this dynamic ecosystem allows us to stay ahead of the curve, ensuring that we can offer our clients innovative solutions that are both current and future-proof. By integrating the latest trends and best practices into our service offerings, we help our clients stay competitive in a rapidly evolving digital landscape.</p>
                 </section>
             </div>
         </div>
