@@ -1,2 +1,2 @@
-sample/
-*app.py*
+*/node_modules/*
+*.env

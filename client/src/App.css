@@ -1,0 +1,11 @@
+h1,p{
+  margin: 0px 0px 10px;
+  transform: none;
+}
+h1{
+  font-size: 22px !important;
+}
+p{
+  font-size: 13px !important;
+}
+

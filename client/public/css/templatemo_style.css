@@ -1,0 +1,43 @@
+/* Credit: http://www.templatemo.com */
+
+body, html { overflow-x:hidden; }
+
+body {
+    background-color: #ffffff;
+    font-family: 'Open Sans', 'sans-serif';
+    font-size: 13px;
+	color:#4a4a4a;
+	line-height:20px;
+	
+	font-weight: 300; 
+	font-style: normal; 
+	-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+	-webkit-text-size-adjust: 100%;
+}
+
+h1{ text-transform:uppercase;}
+
+h1, h2, h3, h4, h5, h6, span, p { font-family: 'Open Sans', 'sans-serif'; }
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 15px;
+    /* Default alignment (can be overridden) */
+    text-align: center;
+}
+
+.h2-left {
+    text-align: left;
+}
+
+/* Center-aligned h2 (just in case you want to override) */
+.h2-center {
+    text-align: center;
+}
+
+/* Right-aligned h2 */
+.h2-right {
+    text-align: right;
+}

@@ -1,0 +1,53 @@
+ul li{
+    font-size: 13px;
+}
+
+.training-content-info{
+    margin: 0px;
+}
+
+.training-content .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.training-content .btn-default {
+    color: #fff;
+    background-color: #161f28;
+    border-left:#f15f0a solid 3px;
+  }
+
+.training-content .btn-default:hover{
+    background-color: #161f28;
+    color: #fff;
+    border-right:#f15f0a solid 3px;
+}
+
+
+.falling-column{
+    animation: fadeInDown 0.5s ease-out forwards;  /* Customize the timing */
+    opacity: 0;  /* Start with opacity 0 */
+    transform: translateY(-30px);  /* Start from slightly below */
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s ease;  /* Smooth transition when hovering */
+}
+
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);  /* Start below the normal position */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);  /* End in the normal position */
+    }
+  }
+
+  .falling-column:nth-child(odd) {
+    animation-delay: 0.4s;  /* Stagger animation */
+  }
+  
+  .falling-column:nth-child(even) {
+    animation-delay: 0.8s;  /* Stagger animation */
+  }

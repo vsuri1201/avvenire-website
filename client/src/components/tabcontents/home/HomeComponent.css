@@ -1,0 +1,42 @@
+.home-content .btn-default {
+  color: #fff;
+  background-color: #161f28;
+  border-left:#f15f0a solid 3px;
+}
+
+.home-content .btn-default:hover{
+  background-color: #161f28;
+  color: #fff;
+  border-right:#f15f0a solid 3px;
+}
+/* Marquee.css */
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+  background: linear-gradient(to right, rgb(255, 111, 0), rgb(0, 89, 255));
+
+}
+
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+
+.marquee .marquee-text {
+  font-size: 16px !important;
+  color: whitesmoke; /* Set text color to transparent */
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
