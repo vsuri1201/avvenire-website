@@ -14,7 +14,6 @@ const ContactForm = () => {
     subject:''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
 // Handle input changes
   const handleChange = (e) => {
       const { name, value } = e.target;
@@ -36,19 +35,17 @@ const ContactForm = () => {
 
       // Assuming you'll send the form data to a server or handle it here
       console.log('Form data submitted:', formData);
-
-      const url = 'http://127.0.0.1:5000/send-message'; // Replace with your URL
-
+      console.log(process.env.REACT_APP_API_URL);
       try {
-        const response = await axios.post(url, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/send-message`, // Use the correct API URL without /api
+          formData, 
+          {headers: {'Content-Type': 'multipart/form-data'}}
+        );
         console.log('Success:', response.data);
-        } catch (error) {
-          console.error('Error:', error);
-        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '',subject:'' }); // Reset form fields
       };
