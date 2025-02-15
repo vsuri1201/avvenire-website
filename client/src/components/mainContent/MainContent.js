@@ -1,10 +1,10 @@
 import { tabInfo } from "../assets/constants/constants"
 import BannerContent from "./banner/BannerContent"
 
-const MainContent = ({selectedTab})=>{
+const MainContent = ({selectedTab, setActiveContent})=>{
     const getSelectedTabComponent = (tab)=>{
         let Component = tabInfo[tab].component
-        return <Component />
+        return <Component setActiveContent={setActiveContent} />
     }
 
     const getBannerData = (tab)=>{

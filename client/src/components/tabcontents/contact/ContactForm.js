@@ -1,339 +1,140 @@
 import React, { useState } from "react";
-import {
-  skillsOptions,
-  designationOptions,
-} from "../../assets/constants/constants";
+
 import "./Contact.css";
+import axios from 'axios';
 import location_icon from "../../assets/images/location-icon.jpg";
 import web_icon from "../../assets/images/web-icon.jpg";
 import mail_icon from "../../assets/images/mail-icon.jpg";
 import phone_icon from "../../assets/images/phone-icon.jpg";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    primarySkills: "",
-    currentDesignation: "",
-    subject: "",
-    message: "",
-    attachments: null,
-    legalStatus: "",
+    name: '',
+    email: '',
+    message: '',
+    subject:''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const [errors, setErrors] = useState({});
-
+// Handle input changes
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    if (type === "file") {
-      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
-    } else {
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
-    }
+      const { name, value } = e.target;
+      setFormData(prevData => ({
+          ...prevData,
+          [name]: value
+      }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+// Handle form submission
+  const handleSubmit = async (e) => {
+      e.preventDefault();
 
-    // Form validation
-    const newErrors = {};
-    if (!formData.firstName) newErrors.firstName = "First name is required";
-    if (!formData.lastName) newErrors.lastName = "Last name is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.primarySkills)
-      newErrors.primarySkills = "Primary skills are required";
-    if (!formData.currentDesignation)
-      newErrors.currentDesignation = "Current designation is required";
-    if (!formData.legalStatus)
-      newErrors.legalStatus = "Legal status is required";
+      // Simple form validation (optional)
+      if (!formData.name || !formData.email || !formData.message || !formData.subject) {
+          alert('Please fill in all fields');
+          return;
+      }
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
-      // Handle successful form submission (e.g., send data to API)
-      console.log("Form submitted successfully:", formData);
-      // Clear the form data or show success message
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        primarySkills: "",
-        currentDesignation: "",
-        subject: "",
-        message: "",
-        attachments: null,
-        legalStatus: "",
-      });
-      document.getElementById("attachments").value = "";
-    }
-  };
+      // Assuming you'll send the form data to a server or handle it here
+      console.log('Form data submitted:', formData);
+
+      const url = 'http://127.0.0.1:5000/send-message'; // Replace with your URL
+
+      try {
+        const response = await axios.post(url, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        console.log('Success:', response.data);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', message: '',subject:'' }); // Reset form fields
+      };
 
   return (
     <div className="contact-form">
       <div className="container">
         <div className="row justify-content-left">
           <div className="col-md-6">
-            <form onSubmit={handleSubmit}>
-              {/* First Name and Last Name in the same row */}
-              <div className="row mb-4">
-                <div className="col-md-6">
-                  <label htmlFor="firstName" className="form-label">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                  />
-                  {errors.firstName && (
-                    <div className="text-danger">{errors.firstName}</div>
-                  )}
-                </div>
-
-                <div className="col-md-6">
-                  <label htmlFor="lastName" className="form-label">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
-                  />
-                  {errors.lastName && (
-                    <div className="text-danger">{errors.lastName}</div>
-                  )}
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="mb-4">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-control form-control-lg"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-                {errors.email && (
-                  <div className="text-danger">{errors.email}</div>
-                )}
-              </div>
-              {/* Legal Status */}
-              <div className="mb-4">
-                <div className="form-group">
-                  <label htmlFor="legalStatus">Legal Status:&nbsp;</label>
-
-                  {/* Radio Buttons for Legal Status */}
-                  <div className="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="opt"
-                      name="legalStatus"
-                      className="form-check-input"
-                      value="OPT"
-                      onChange={handleChange}
-                      checked={formData.legalStatus === "OPT"}
-                      required
-                    />
-                    <label htmlFor="opt" className="form-check-label">
-                      OPT
-                    </label>
+            <div className="form-container">
+              <h2>We welcome your inquiries and feedback.</h2>
+              <br></br>
+              {!isSubmitted ? (
+                  <form onSubmit={handleSubmit}>
+                      <div className="mb-4">
+                        <label htmlFor="name" className="form-label">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control form-control-lg"
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="email" className="form-label">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          className="form-control form-control-lg"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="subject" className="form-label">
+                          Subject
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control form-control-lg"
+                          id="subject"
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="message" className="form-label">
+                          Message
+                        </label>
+                        <textarea
+                          className="form-control form-control-lg"
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                        ></textarea>
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-primary mar-t-20 w-25 py-3">
+                        Submit
+                      </button>
+                  </form>
+              ) : (
+                  <div>
+                      <h3>Thank you for reaching out!</h3>
+                      <p>We'll get back to you as soon as possible.</p>
                   </div>
-
-                  <div className="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="h1b"
-                      name="legalStatus"
-                      className="form-check-input"
-                      value="H1B"
-                      onChange={handleChange}
-                      checked={formData.legalStatus === "H1B"}
-                      required
-                    />
-                    <label htmlFor="h1b" className="form-check-label">
-                      H1B
-                    </label>
-                  </div>
-
-                  <div className="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="ead"
-                      name="legalStatus"
-                      className="form-check-input"
-                      value="EAD"
-                      onChange={handleChange}
-                      checked={formData.legalStatus === "EAD"}
-                      required
-                    />
-                    <label htmlFor="ead" className="form-check-label">
-                      EAD
-                    </label>
-                  </div>
-
-                  <div className="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="gc"
-                      name="legalStatus"
-                      className="form-check-input"
-                      value="GC"
-                      onChange={handleChange}
-                      checked={formData.legalStatus === "GC"}
-                      required
-                    />
-                    <label htmlFor="gc" className="form-check-label">
-                      Green Card
-                    </label>
-                  </div>
-
-                  <div className="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="citizen"
-                      name="legalStatus"
-                      className="form-check-input"
-                      value="Citizen"
-                      onChange={handleChange}
-                      checked={formData.legalStatus === "Citizen"}
-                      required
-                    />
-                    <label htmlFor="citizen" className="form-check-label">
-                      U.S.Citizen
-                    </label>
-                  </div>
-
-                  {/* Error message if no radio button is selected */}
-                  {errors.legalStatus && (
-                    <small className="text-danger">
-                      Please select a legal status.
-                    </small>
-                  )}
-                </div>
-              </div>
-              {/* Primary Skills and Current Designation in the same row */}
-              <div className="row mb-4">
-                <div className="col-md-6">
-                  <label htmlFor="primarySkills" className="form-label">
-                    Primary Skills
-                  </label>
-                  <select
-                    className="form-select form-select-lg"
-                    id="primarySkills"
-                    name="primarySkills"
-                    value={formData.primarySkills}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select Primary Skills</option>
-                    {skillsOptions.map((skill, index) => (
-                      <option key={index} value={skill}>
-                        {skill}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.primarySkills && (
-                    <div className="text-danger">{errors.primarySkills}</div>
-                  )}
-                </div>
-
-                <div className="col-md-6">
-                  <label htmlFor="currentDesignation" className="form-label">
-                    Current Designation
-                  </label>
-                  <select
-                    className="form-select form-select-lg"
-                    id="currentDesignation"
-                    name="currentDesignation"
-                    value={formData.currentDesignation}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select Current Designation</option>
-                    {designationOptions.map((designation, index) => (
-                      <option key={index} value={designation}>
-                        {designation}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.currentDesignation && (
-                    <div className="text-danger">
-                      {errors.currentDesignation}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Subject */}
-              <div className="mb-4">
-                <label htmlFor="subject" className="form-label">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                />
-              </div>
-
-              {/* Message */}
-              <div className="mb-4">
-                <label htmlFor="message" className="form-label">
-                  Message
-                </label>
-                <textarea
-                  className="form-control form-control-lg"
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                ></textarea>
-              </div>
-
-              {/* Attachments */}
-              <div className="mb-4">
-                <label htmlFor="attachments" className="form-label">
-                  Attachments
-                </label>
-                <input
-                  type="file"
-                  className="form-control form-control-lg"
-                  id="attachments"
-                  name="attachments"
-                  onChange={handleChange}
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="btn btn-primary mar-t-20 w-25 py-3"
-              >
-                Submit
-              </button>
-            </form>
+              )}
+            </div>
           </div>
           <div className="col-md-offset-1 col-md-4">
             <div class="content">
               <p>
-                <h2>
+                <h2 className="h2-left">
                   {" "}
                   <img src={location_icon} alt="location"></img> Administrative
                   Location
@@ -345,7 +146,7 @@ const ContactForm = () => {
 
             <div class="content">
               <p>
-                <h2>
+                <h2 className="h2-left">
                   {" "}
                   <img src={location_icon} alt="location"></img>Office Location
                 </h2>
@@ -356,7 +157,7 @@ const ContactForm = () => {
 
             <div class="content">
               <p>
-                <h2>
+                <h2 className="h2-left">
                   {" "}
                   <img src={phone_icon} alt="location"></img>Phone
                 </h2>
@@ -366,7 +167,7 @@ const ContactForm = () => {
 
             <div class="content">
               <p>
-                <h2>
+                <h2 className="h2-left">
                   <img src={mail_icon} alt="location"></img> Email
                 </h2>
                 <a href="mailto:hr@avveniresolutions.com">
@@ -377,7 +178,7 @@ const ContactForm = () => {
 
             <div class="content">
               <p>
-                <h2>
+                <h2 className="h2-left">
                   <img src={web_icon} alt="location"></img> Website:{" "}
                 </h2>
                 <a href="http://www.avveniresolutions.com/">

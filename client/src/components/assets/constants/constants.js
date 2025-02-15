@@ -244,7 +244,7 @@ export const jobs = [
   {
     id: 9,
     title: "QA Lead",
-    description: "Leading the Quality Assurance team to ensure the delivery of high-quality software with minimal defects.",
+    description: "Leading the QA team to ensure the delivery of high-quality software with minimal defects.",
     postedDate: "15-01-2025",
     fullDescription: {
       jobDescription: "The QA Lead is responsible for overseeing the quality assurance process, including test planning, execution, and automation. The role also includes mentoring junior QA engineers and ensuring that quality is maintained throughout the SDLC.",
@@ -269,7 +269,7 @@ export const jobs = [
   {
     id: 10,
     title: "Cloud Engineer",
-    description: "Designing and implementing scalable cloud infrastructure to support applications and services in the cloud.",
+    description: "Designing and implementing scalable cloud infrastructure to support cloud applications.",
     postedDate: "20-01-2025",
     fullDescription: {
       jobDescription: "The Cloud Engineer is responsible for designing, deploying, and managing cloud infrastructure. This includes automating cloud services, managing cloud environments, and ensuring security, performance, and cost optimization in a cloud-native environment.",
@@ -293,6 +293,15 @@ export const jobs = [
   }
 ];
 
-export const skillsOptions = ['Java/J2EE', 'JavaScript', 'Python', 'DevOps', '.NET', 'SQL', 'AI/ML', 'Azure/AWS Cloud', 'C#','C++'];
-export const designationOptions = ['Software Engineer', 'Senior Software Engineer', 'Full Stack Developer', 'Tech Lead',
-   'DevOps Engineer','QA Analyst', 'QA Lead', 'Business Analyst','Architect','Cloud Engineer','Manager'];
+export const skillsOptions = [
+  'Java/J2EE', 'JavaScript', 'Python', 'DevOps', '.NET', 
+  'SQL', 'AI/ML', 'Azure/AWS Cloud', 'C#','C++'
+];
+
+export const designationOptions = [
+  'Software Engineer', 'Senior Software Engineer', 
+  'Full Stack Developer', 'Tech Lead','DevOps Engineer',
+  'QA Analyst', 'QA Lead', 'Business Analyst','Architect',
+  'Cloud Engineer','Manager', 'Fresher', 'Intern',
+  'Self Employed', 'Unemployed', 'Other'
+];

@@ -1,71 +1,61 @@
 // src/components/JobList.js
 import React, { useState } from 'react';
 import JobCard from './JobCard';
-import Modal from 'react-modal';
 import './Jobs.css'
 import { jobs } from '../../../assets/constants/constants';
+import JobApplicationModal from './JobApplicationModal';
+import JobDescriptionModal from './JobDescriptionModal';
 
 const JobList = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isJDModalOpen, setIsJDModalOpen] = useState(false);
+  const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
-
-  const openModal = (job) => {
+  let state = null;
+  const openModal = (state, job)=>{
+    if (state === 'JD'){
+      setIsJDModalOpen(true);
+    }
+    else{
+      setIsApplicationModalOpen(true);
+    }
     setSelectedJob(job);
-    setIsModalOpen(true);
-  };
+  }
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeModal = (state) => {
+    if (state === 'JD'){
+      setIsJDModalOpen(false);
+    }
+    else{
+      setIsApplicationModalOpen(false);
+    }
     setSelectedJob(null);
   };
 
   return (
-    <div className="col-md-offset-1 col-md-11">
-      <h1>Job Listings</h1>
+    <div className="job-list-container">
+      <br></br>
       <div className="job-list">
         {jobs.map((job) => (
-          <JobCard key={job.id} job={job} onClick={() => openModal(job)} />
+          <JobCard 
+            key={job.id} 
+            job={job} 
+            onViewClick={() => openModal(state='JD', job)} 
+            onApplyClick={()=> openModal(state='Application', job)} />
         ))}
       </div>
 
       {/* Modal for Job Details */}
-      <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          contentLabel="Job Details"
-        >
-          <div className='container'>
-            <div className="row modal-header">
-              {/* Close button (X) */}
-              <button className="close-button"  onClick={closeModal}>
-                <span className="material-icons">close</span>
-              </button>
-            </div>
-            <div className='row modal-body'>
-              <h2>{selectedJob?.title}</h2>
-              <h3>Job Description:</h3>
-              <p>{selectedJob?.fullDescription.jobDescription}</p>
+      <JobDescriptionModal 
+        selectedJob={selectedJob} 
+        isJDModalOpen={isJDModalOpen} 
+        closeModal = {closeModal} />
+      
+      {/* Modal for Job Application */}
 
-              <h3>Educational Requirements:</h3>
-              <ul>
-                {selectedJob?.fullDescription.educationalRequirements.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-
-              <h3>Roles and Responsibilities:</h3>
-              <ul>
-                {selectedJob?.fullDescription.rolesAndResponsibilities.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-
-              <div className='row apply-button-container'>
-                <button className='col-md-1'>Apply</button>
-              </div>
-            </div>
-          </div>
-        </Modal>
+      <JobApplicationModal 
+        selectedJob={selectedJob} 
+        isApplicationModalOpen={isApplicationModalOpen} 
+        closeModal = {closeModal}/>
     </div>
   );
 };

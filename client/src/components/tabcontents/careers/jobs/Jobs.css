@@ -1,3 +1,10 @@
+.job-list-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 50px;
+}
+
 .job-list {
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +14,6 @@
   
 .job-card {
   width: 300px;
-  height: 175px;
   position: relative;
   border: 1px solid #ccc;
   padding: 10px;
@@ -29,12 +35,29 @@
 .job-card .action-buttons{
   position: absolute;
   bottom:0px;
-  left: 0px;
+  right: 0px;
+}
+
+.job-card .action-buttons .view-button, .apply-button{
+  color: black;
+  text-decoration: none;
+}
+
+.job-card .action-buttons .apply-button:hover{
+  text-decoration: none;
+  color: blue;
+  font-size: 120%;
+}
+
+.job-card .action-buttons .view-button:hover{
+  text-decoration: none;
+  color: blue;
+  font-size: 120%;
 }
 
 .job-card:hover {
   transform: translateY(-5px);
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -144,4 +167,19 @@ button {
   font-size: 30px; /* Set size of the X icon */
   color: #333;
   transition: color 0.3s ease;
+}
+
+.application-modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.application-modal .form-container label{
+  font-size: 12px;
+  color: #333;
+}
+
+.application-modal .form-container textarea{
+  height:75px;
 }

@@ -18,7 +18,7 @@ function App() {
     <>
       <SocialComponent></SocialComponent>
       <NavbarComponent onTabSelect={handleNavClick}></NavbarComponent>
-      <MainContent selectedTab = {selectedTab}></MainContent>
+      <MainContent selectedTab = {selectedTab} setActiveContent = {setSelectedTab}></MainContent>
       <Footer></Footer>
     </>
   );

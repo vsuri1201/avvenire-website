@@ -4,8 +4,8 @@ const CareerComponent = ()=>{
         <>
             <div className="row bgcolr">
                 <div className="container mar-t-50 wow bounceInLeft">
-                    <div className="col-md-offset-4 col-md-8">
-                        <h1>Avvenire solutions careers</h1>
+                    <div className="col-md-12">
+                        <h1 className="text-center">Job Listings</h1>
                     </div>
                 </div>
             </div>
