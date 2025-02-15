@@ -47,11 +47,15 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
       form.append('jobDetail', `${selectedJob.title} - ${selectedJob.id}`);
 
       try {
-        const response = await axios.post("http://127.0.0.1:5000/apply", form, {
-          headers: {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/apply`,
+          form, 
+          {
+            headers: {
             'Content-Type': 'multipart/form-data',
-          },
-        });
+            }
+          }
+        );
         alert("Application submitted successfully!");
         console.log('success:', response.data);
       } catch (error) {
