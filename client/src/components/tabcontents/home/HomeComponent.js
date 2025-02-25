@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import about_image from '../../assets/images/animation_banner_image.png'
 import training_image from '../../assets/images/training.jpg'
 import services_image from '../../assets/images/services.jpg'
+import careers_image from '../../assets/images/careers.jpg'
 const HomeComponent = ({setActiveContent})=>{
 
     const handleScrollToTop = () => {
@@ -56,7 +57,17 @@ const HomeComponent = ({setActiveContent})=>{
                             </div>
                         </div>
                     </div>
-            
+
+                    <div className="col-md-4 wow bounceIn">
+                        <div className="custom-thumbnail round">
+                            <img src={careers_image} className="img-responsive" alt="..."></img>
+                            <div className="custom-caption">
+                                <h3>Careers </h3>
+                                <p>Join us for exciting career opportunities in a dynamic environment, where your potential can thrive.</p>
+                                <button className="btn btn-default pull-right" onClick={()=>{setActiveContent('Careers'); handleScrollToTop();}}>Read More</button>
+                            </div>
+                        </div>
+                    </div>
             
                 </div>
             </div>

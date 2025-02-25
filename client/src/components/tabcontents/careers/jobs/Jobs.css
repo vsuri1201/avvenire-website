@@ -35,7 +35,7 @@
 .job-card .action-buttons{
   position: absolute;
   bottom:0px;
-  right: 0px;
+  right: 5px;
 }
 
 .job-card .action-buttons .view-button, .apply-button{
@@ -182,4 +182,11 @@ button {
 
 .application-modal .form-container textarea{
   height:75px;
+}
+
+.submission-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
 }

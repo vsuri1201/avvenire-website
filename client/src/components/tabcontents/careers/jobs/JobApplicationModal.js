@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import Select from 'react-select';
 import PhoneInput from "react-phone-input-2";
+import LoaderComponent from '../../../loader/LoaderComponent';
 import "react-phone-input-2/lib/style.css";
 import {
   skillsOptions,
@@ -11,9 +12,16 @@ import {
 } from "../../../assets/constants/constants";
 const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) => {
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true); // Stop the loading spinner after the timeout
+    }, 3500);
     // Form validation
     const newErrors = {};
     if (!formData.firstName) newErrors.firstName = "First name is required";
@@ -32,6 +40,17 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
       
     } 
     else {
+      let primarySkillsToSubmit = formData.primarySkills
+      .split(',') // Split by commas
+      .map(skill => skill.trim()) // Trim any leading/trailing whitespace
+      .filter(skill => skill !== 'Other' && skill !== '') // Remove 'Other' and any empty strings
+      .join(', '); // Join back the array into a string, separated by commas
+
+    // Append customSkills if present
+    if (formData.customSkills) {
+      primarySkillsToSubmit = `${primarySkillsToSubmit}, ${formData.customSkills}`;
+    }
+      
       // Handle successful form submission (e.g., send data to API)
       const form = new FormData();
       form.append('firstName', formData.firstName);
@@ -40,14 +59,15 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
       form.append('mobile', formData.mobile);
       form.append('usCitizen', formData.usCitizen);
       form.append('visaSponsorship', formData.visaSponsorship);
-      form.append('primarySkills', formData.primarySkills);
-      form.append('currentDesignation', formData.currentDesignation);
+      form.append('primarySkills', primarySkillsToSubmit);
+      form.append('currentDesignation', 
+        formData.currentDesignation==="Other" ? 
+        formData.customDesignation : formData.currentDesignation);
       form.append('message', formData.message);
       form.append('attachment', formData.attachment);
       form.append('jobDetail', `${selectedJob.title} - ${selectedJob.id}`);
-
       try {
-        const response = await axios.post(
+        await axios.post(
           `${process.env.REACT_APP_API_URL}/apply`,
           form, 
           {
@@ -56,8 +76,6 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
             }
           }
         );
-        alert("Application submitted successfully!");
-        console.log('success:', response.data);
       } catch (error) {
         console.error('Error uploading data:', error);
       }
@@ -72,12 +90,17 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
         subject: "",
         message: "",
         attachment: null,
-        usCitizen: "Yes",
-        visaSponsorship: "No",
+        usCitizen: "",
+        visaSponsorship: "",
+        customSkills: "",
+        customDesignation: ""
       });
-      document.getElementById("attachment").value = "";
+      // document.getElementById("attachment")?.value = "";
       setSelectedSkills([]);
-      closeModal('Application');
+      // closeModal('Application');
+      for (let [key, value] of form.entries()) {
+        console.log(`${key}: ${value}`);
+      }
     }
   };
 
@@ -90,11 +113,15 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
       subject: "",
       message: "",
       attachment: null,
-      usCitizen: "Yes",
-      visaSponsorship: "No",
+      usCitizen: "",
+      visaSponsorship: "",
+      customSkills:"",
+      customDesignation: ""
     });
   
   const [selectedSkills, setSelectedSkills] = useState([]);
+  const [customSkillsDisabled, setCustomSkillsDisabled] = useState(true);
+  const [customDesignationDisabled, setCustomDesignationDisabled] = useState(true);
   
     useEffect(() => {
       // Initialize selectedSkills as an array of objects (if formData.primarySkills is not empty)
@@ -139,22 +166,30 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
       }
     }
   };
-
+  
   const handleMultiSelectChange = (selectedOptions) => {
-    const selectedSkills = selectedOptions ? selectedOptions.map(option => option.value).join(', ') : '';
+    // Check if "Other" is selected for skills
+    const selectedSkills = selectedOptions.map(option => option.value);
     setFormData((prevData) => ({
       ...prevData,
-      primarySkills: selectedSkills, // Store the string in formData
+      primarySkills: selectedSkills.join(', ') // Store the selected skills
     }));
+
+    const isOtherSelected = selectedSkills.includes('Other');
+    setCustomSkillsDisabled(!isOtherSelected);  // Enable custom skill input if "Other" is selected
   };
 
   const handleSingleSelectChange = (selectedOption) => {
+    // Check if "Other" is selected for designation
     setFormData((prevData) => ({
       ...prevData,
-      currentDesignation: selectedOption ? selectedOption.value : '',
+      currentDesignation: selectedOption ? selectedOption.value : ''
     }));
+
+    const isOtherSelected = selectedOption?.value === 'Other';
+    setCustomDesignationDisabled(!isOtherSelected);  // Enable custom designation input if "Other" is selected
   };
-  
+
   const mappedDesignationOptions = designationOptions.map((designation) => ({
     value: designation,
     label: designation,
@@ -165,24 +200,31 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
     (option) => option.value === formData.currentDesignation
   );
 
+  const handleClose = () => {
+    closeModal('Application');
+    setIsSubmitted(false);
+  }
+
   return (
     <Modal
     isOpen={isApplicationModalOpen}
-    onRequestClose={() => closeModal('Application')}
+    onRequestClose={handleClose}
     contentLabel="Job Application"
     ariaHideApp={false}>
       <div className="application-modal">
         <div className="row modal-header">
           {/* Close button (X) */}
-          <button className="close-button"  onClick={() => closeModal('Application')}>
+          <button className="close-button"  onClick={handleClose}>
             <span className="material-icons">close</span>
           </button>
         </div>
         <div className='row modal-body'>
           <div className="col-md-12">
             <h2>{selectedJob?.title}</h2>
-            <div className="form-container col-md-6">
-              <form onSubmit={handleSubmit}>
+            {!isLoading ? (
+              <div className="form-container col-md-6">
+              {!isSubmitted ? (
+                <form onSubmit={handleSubmit}>
                 {/* First Name and Last Name in the same row */}
                 <div className="row mb-4">
                   <div className="col-md-6">
@@ -261,6 +303,89 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
                   </div>
                 </div>
                 
+                {/* Primary Skills and Current Designation in the same row */}
+                <div className="row mb-4">
+                  <div className="col-md-6">
+                    <label htmlFor="primarySkills" className="form-label">
+                      Primary Skills
+                    </label>
+                    <Select
+                      inputProps={{
+                        id:"primarySkills",
+                        name:"primarySkills"
+                      }}
+                      inputStyle={{width: '100%'}}
+                      isMulti
+                      options={skillsOptions.map((skill) => ({
+                        value: skill,
+                        label: skill,
+                      }))}
+                      value={selectedSkills}
+                      onChange={handleMultiSelectChange}
+                      getOptionLabel={(e) => e.label}  // Use the label for display in the dropdown
+                      getOptionValue={(e) => e.value}  // Use the value for the selection
+                      placeholder="Select Primary Skills"
+                      required />
+                    {errors.primarySkills && (
+                      <div className="text-danger">{errors.primarySkills}</div>
+                    )}
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="customSkills" className="form-label">
+                      Other Skills
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control form-control-lg"
+                      id="customSkills"
+                      name="customSkills"
+                      value={formData.customSkills}
+                      onChange={handleChange}
+                      disabled={customSkillsDisabled}
+                    />
+                  </div>
+                </div>
+
+                <div className='row mb-4'>
+                  <div className="col-md-6">
+                    <label htmlFor="currentDesignation" className="form-label">
+                      Current Designation
+                    </label>
+                    <Select
+                      inputProps={{
+                        id:"currentDesignation",
+                        name:"currentDesignation"
+                      }}
+                      inputStyle={{width: '100%'}}
+                      options = {mappedDesignationOptions}
+                      value = {selectedDesignation || null}
+                      onChange={handleSingleSelectChange}
+                      getOptionLabel={(e) => e.label}  // Use the label for display in the dropdown
+                      getOptionValue={(e) => e.value} // Use the value for the selection
+                      placeholder="Select Current Designation"
+                      required />
+                    {errors.currentDesignation && (
+                      <div className="text-danger">
+                        {errors.currentDesignation}
+                      </div>
+                    )}
+                  </div>
+                  <div className="col-md-6">
+                    <label htmlFor="customDesignation" className="form-label">
+                      Other Designation
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control form-control-lg"
+                      id="customDesignation"
+                      name="customDesignation"
+                      value={formData.customDesignation}
+                      onChange={handleChange}
+                      disabled={customDesignationDisabled}
+                    />
+                  </div>
+                </div>
+
                 {/* US Citizenship */}
                 <div className="row">
                   <div className='form-group'>
@@ -353,58 +478,7 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
                     )}
                   </div>
                 </div>
-                {/* Primary Skills and Current Designation in the same row */}
-                <div className="row mb-4">
-                  <div className="col-md-6">
-                    <label htmlFor="primarySkills" className="form-label">
-                      Primary Skills
-                    </label>
-                    <Select
-                      inputProps={{
-                        id:"primarySkills",
-                        name:"primarySkills"
-                      }}
-                      inputStyle={{width: '100%'}}
-                      isMulti
-                      options={skillsOptions.map((skill) => ({
-                        value: skill,
-                        label: skill,
-                      }))}
-                      value={selectedSkills}
-                      onChange={handleMultiSelectChange}
-                      getOptionLabel={(e) => e.label}  // Use the label for display in the dropdown
-                      getOptionValue={(e) => e.value}  // Use the value for the selection
-                      placeholder="Select Primary Skills"
-                      required />
-                    {errors.primarySkills && (
-                      <div className="text-danger">{errors.primarySkills}</div>
-                    )}
-                  </div>
-
-                  <div className="col-md-6">
-                    <label htmlFor="currentDesignation" className="form-label">
-                      Current Designation
-                    </label>
-                    <Select
-                      inputProps={{
-                        id:"currentDesignation",
-                        name:"currentDesignation"
-                      }}
-                      inputStyle={{width: '100%'}}
-                      options = {mappedDesignationOptions}
-                      value = {selectedDesignation || null}
-                      onChange={handleSingleSelectChange}
-                      getOptionLabel={(e) => e.label}  // Use the label for display in the dropdown
-                      getOptionValue={(e) => e.value} // Use the value for the selection
-                      placeholder="Select Current Designation"
-                      required />
-                    {errors.currentDesignation && (
-                      <div className="text-danger">
-                        {errors.currentDesignation}
-                      </div>
-                    )}
-                  </div>
-                </div>
+                
 
                 {/* Message to the Employer */}
                 <div className="row mb-4">
@@ -424,7 +498,7 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
                 {/* attachment */}
                 <div className="row mb-4">
                   <label htmlFor="attachment" className="form-label">
-                    Your Resume/CV &nbsp;&nbsp;<text style={{opacity:0.6}}>(PDF or Word document)</text>
+                    Your Resume/CV &nbsp;&nbsp;<span style={{opacity:0.6}}>(PDF or Word document)</span>
                   </label>
                   <input
                     type="file"
@@ -449,7 +523,13 @@ const JobApplicationModal = ({selectedJob, isApplicationModalOpen, closeModal}) 
                     </div>
                 </div>
               </form>
+              ) : (
+                <div className="submission-content"> Application submitted successfully. You can close this window now.</div>
+              )}
             </div>
+            ): (
+              <LoaderComponent type="application"/>
+            )}
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ const JobList = () => {
       setIsJDModalOpen(true);
     }
     else{
+      setIsJDModalOpen(false);
       setIsApplicationModalOpen(true);
     }
     setSelectedJob(job);
@@ -39,8 +40,7 @@ const JobList = () => {
           <JobCard 
             key={job.id} 
             job={job} 
-            onViewClick={() => openModal(state='JD', job)} 
-            onApplyClick={()=> openModal(state='Application', job)} />
+            onViewClick={() => openModal(state='JD', job)} />
         ))}
       </div>
 
@@ -48,7 +48,8 @@ const JobList = () => {
       <JobDescriptionModal 
         selectedJob={selectedJob} 
         isJDModalOpen={isJDModalOpen} 
-        closeModal = {closeModal} />
+        closeModal = {closeModal}
+        onApplyClick={()=> openModal(state='Application', selectedJob)} />
       
       {/* Modal for Job Application */}
 

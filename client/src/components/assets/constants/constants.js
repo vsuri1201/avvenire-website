@@ -48,7 +48,7 @@ export const default_tab = "Home"
 
 export const jobs = [
   {
-    id: 1,
+    id: 'SDE-1B7F9E3',
     title: 'Software Engineer',
     description: 'Developing high-quality software with modern technologies.',
     postedDate: '01-10-2025',
@@ -73,7 +73,7 @@ export const jobs = [
     }
   },
   {
-    id: 2,
+    id: 'FE-2X1D5G9',
     title: 'Frontend Developer',
     description: 'Creating responsive, high-performance web applications.',
     postedDate: '01-10-2025',
@@ -97,7 +97,7 @@ export const jobs = [
     }
   },
   {
-    id: 3,
+    id: 'BE-3J8R4D7',
     title: 'Backend Engineer',
     description: 'Building scalable backend services and APIs.',
     postedDate: '01-10-2025',
@@ -121,7 +121,7 @@ export const jobs = [
     }
   },
   {
-    id: 4,
+    id: 'DE-4P3T2Y6',
     title: 'Senior DevOps Engineer',
     description: 'Managing and automating infrastructure for scalable applications.',
     postedDate: '01-10-2025',
@@ -145,7 +145,7 @@ export const jobs = [
     }
   },
   {
-    id: 5,
+    id: 'FS-5A4M6J3',
     title: 'Senior Full Stack Developer',
     description: 'Designing and developing both frontend and backend solutions.',
     postedDate: '01-10-2025',
@@ -169,7 +169,7 @@ export const jobs = [
     }
   },
   {
-    id: 6,
+    id: 'BA-6D3M9N4',
     title: 'Senior Business Analyst',
     description: 'Analyzing and improving business processes through detailed research and collaboration.',
     postedDate: '01-10-2025',
@@ -194,7 +194,7 @@ export const jobs = [
     }
   },
   {
-    id: 7,
+    id: 'DA-7V1S8X5',
     title: 'Senior Data Analyst',
     description: 'Leveraging data analysis to uncover actionable insights and drive business performance.',
     postedDate: '01-10-2025',
@@ -218,7 +218,7 @@ export const jobs = [
     }
   },
   {
-    id: 8,
+    id: 'EM-8L2N7Q0',
     title: 'Engineering Manager',
     description: 'Leading and mentoring engineering teams to deliver high-quality software solutions.',
     postedDate: '01-10-2025',
@@ -242,7 +242,7 @@ export const jobs = [
     }
   },
   {
-    id: 9,
+    id: 'QA-10D3F6X',
     title: "QA Lead",
     description: "Leading the QA team to ensure the delivery of high-quality software with minimal defects.",
     postedDate: "15-01-2025",
@@ -267,7 +267,7 @@ export const jobs = [
     }
   },
   {
-    id: 10,
+    id: 'CE-9M4P1R2',
     title: "Cloud Engineer",
     description: "Designing and implementing scalable cloud infrastructure to support cloud applications.",
     postedDate: "20-01-2025",
@@ -295,7 +295,7 @@ export const jobs = [
 
 export const skillsOptions = [
   'Java/J2EE', 'JavaScript', 'Python', 'DevOps', '.NET', 
-  'SQL', 'AI/ML', 'Azure/AWS Cloud', 'C#','C++'
+  'SQL', 'AI/ML', 'Azure/AWS Cloud', 'C#','C++', 'Other'
 ];
 
 export const designationOptions = [

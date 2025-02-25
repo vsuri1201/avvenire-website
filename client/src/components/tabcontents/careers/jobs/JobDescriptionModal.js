@@ -1,6 +1,6 @@
 import './Jobs.css'
 import Modal from 'react-modal';
-const JobDescriptionModal = ({selectedJob, isJDModalOpen, closeModal}) =>{
+const JobDescriptionModal = ({selectedJob, isJDModalOpen, closeModal, onApplyClick}) =>{
     return (
         <Modal
         isOpen={isJDModalOpen}
@@ -32,6 +32,8 @@ const JobDescriptionModal = ({selectedJob, isJDModalOpen, closeModal}) =>{
                 <li key={index}>{item}</li>
               ))}
             </ul>
+            <br></br>
+            <button className="col-md-1" onClick={onApplyClick}>Apply Now</button>
           </div>
         </div>
       </Modal>
