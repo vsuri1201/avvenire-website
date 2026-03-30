@@ -75,30 +75,6 @@ const ServicesComponent = ()=>{
                 </div>
 
                 <div className="col-md-4 box">
-                    <div className="icon-medium icon-bg round-full mar-b-15 r6">
-                        <i className="fa fa-cog"></i>
-                    </div>
-                    <div className="desc">
-                        <h3>Data Warehousing and Business Intelligence</h3>
-                        <p>We help organizations build data warehouses that enable smarter decision-making. Our solutions include designing data models and integrating business intelligence tools to support your company's growth and profitability.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div className='row mar-t-20'>
-            <div className='col-md-12 mar-b-30 services'>
-                <div className="col-md-4 box">
-                    <div className="icon-medium icon-bg round-full mar-b-15 r7">
-                        <i className="fa fa-code"></i>
-                    </div>
-                    <div className="desc">
-                        <h3>Website Development</h3>
-                        <p>We offer custom web and mobile application development, ensuring user-friendly interfaces and professional designs. Additionally, we provide logo design, branding materials, and marketing collateral to elevate your brand.</p>
-                    </div>
-                </div>
-
-                <div className="col-md-4 box">
                     <div className="icon-medium icon-bg round-full mar-b-15 r8">
                         <i className="fa fa-users"></i>
                     </div>
@@ -106,7 +82,7 @@ const ServicesComponent = ()=>{
                         <h3>Staffing Solutions</h3>
                         <p>We connect you with highly skilled professionals for direct hire or contract opportunities. Our staffing solutions ensure your business gets the right talent to drive growth and succeed in competitive markets.</p>
                     </div>
-                </div>  
+                </div> 
             </div>
         </div>
     </div>
